@@ -1,5 +1,7 @@
 # Agente AI Suporte
 
+![Imagem do Projeto](image.png)
+
 ## Descrição
 Este projeto combina um backend em Python com um frontend moderno em React para criar um agente de suporte inteligente. O objetivo é fornecer uma interface interativa e eficiente para atender às necessidades dos usuários.
 
