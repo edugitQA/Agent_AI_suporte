@@ -7,7 +7,7 @@ __pycache__/
 .env
 *.env
 
-node_modules//
+node_modules
 FRONT/public/
 FRONT/pnpm-lock.yaml
 FRONT/eslint.config.js
