@@ -3,9 +3,19 @@ from pydantic import BaseModel
 from app.agent_service import carregar_agente
 import time
 from datetime import datetime
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 agente = carregar_agente()
+
+# Adicionando o middleware CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Ou especifique ['http://localhost:5173']
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class Pergunta(BaseModel):
     pergunta: str
