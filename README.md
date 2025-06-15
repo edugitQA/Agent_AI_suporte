@@ -1,4 +1,9 @@
-# 🧠 Agente de IA Conversacional com RAG integrado com chat no front
+# 🧠 Agente de IA Conversacional com RAG Integrado
+
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/fastapi-%3E%3D0.100-green)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/react-18-blue)](https://react.dev/)
 
 **Autor:** Eduardo A.  
 **Versão:** 1.0.0  
@@ -6,243 +11,146 @@
 
 ---
 
-## 📘 Sumário Executivo
-
-Este projeto implementa um agente de IA conversacional baseado na arquitetura **RAG (Retrieval-Augmented Generation)**, ideal para responder perguntas sobre produtos de um catálogo online. Desenvolvido em Python com **FastAPI**, **LangChain**, **ChromaDB** e **OpenAI API**, oferece uma solução **escalável**, **robusta** e **inteligente** para atendimento ao cliente automatizado.
-
-A arquitetura modular e as boas práticas de engenharia adotadas tornam o sistema fácil de manter, expandir e integrar com aplicações empresariais existentes.
-
----
-
-## 🧩 Contexto do Projeto
-
-A evolução do e-commerce exige **respostas imediatas e contextuais**. Sistemas baseados apenas em regras ou FAQ não atendem à complexidade das interações modernas.
-
-A arquitetura RAG combina:
-- **Busca semântica vetorial** (recuperação de documentos relevantes)
-- **Geração de linguagem natural** (respostas contextualizadas)
-
-Essa sinergia permite uma compreensão mais profunda e respostas mais precisas para os usuários.
+## 📑 Sumário
+- [Visão Geral](#visão-geral)
+- [Arquitetura](#arquitetura)
+- [Tecnologias](#tecnologias)
+- [Instalação](#instalação)
+- [Execução](#execução)
+- [Exemplo de Uso](#exemplo-de-uso)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
 
 ---
 
-## ✅ Benefícios Esperados
+## 🏷️ Visão Geral
 
-- **💰 Redução de Custos Operacionais**  
-- **⏰ Disponibilidade 24/7**  
-- **📏 Consistência nas Respostas**  
-- **📈 Escalabilidade Horizontal e Vertical**  
-- **📊 Geração de Insights Analíticos**
+Este projeto implementa um agente de IA conversacional baseado em **RAG (Retrieval-Augmented Generation)**, ideal para responder perguntas sobre produtos de um catálogo online. Desenvolvido em Python com **FastAPI**, **LangChain**, **ChromaDB** e **OpenAI API**, oferece uma solução escalável, robusta e inteligente para atendimento ao cliente automatizado.
 
----
+Principais benefícios:
+- Redução de custos operacionais
+- Disponibilidade 24/7
+- Consistência nas respostas
+- Escalabilidade
+- Geração de insights analíticos
 
-## 📌 Escopo e Limitações
-
-- **Não substitui atendimento humano** em situações sensíveis.
-- Utiliza a **OpenAI API**, gerando custos por uso.
-- Futura possibilidade de uso de **modelos open-source** para otimizar custos operacionais.
+> **Nota:** Não substitui atendimento humano em situações sensíveis. Utiliza a OpenAI API, podendo gerar custos por uso.
 
 ---
 
-## 🔁 Fluxo de Dados e Processamento
+## 🏗️ Arquitetura
 
-1. **Recepção da Consulta**
-2. **Conversão em Embedding**
-3. **Busca por Similaridade em Vector Store**
-4. **Geração de Resposta via LLM**
-5. **Pós-processamento e Retorno via API**
-
----
-
-## 🧱 Arquitetura e Tecnologias
-
-### 📦 Backend (Python)
-- **FastAPI**: framework web leve e assíncrono
-- **LangChain**: orquestração RAG com abstrações de LLMs
-- **ChromaDB**: vector store eficiente para embeddings
-- **Pydantic**: validação e serialização robusta
+### Backend (Python)
+- **FastAPI**: framework web assíncrono
+- **LangChain**: orquestração RAG
+- **ChromaDB**: vector store para embeddings
+- **Pydantic**: validação e serialização
 - **OpenAI API**: geração de texto e embeddings
 
-**Estrutura:**
-app/
-├── main.py # Entrypoint do FastAPI
-├── agent_service.py # Lógica principal do agente
-├── config.py # Configurações via env vars
-├── utils.py # Utilitários diversos
+Estrutura principal:
+```
+backend/app/
+├── main.py           # Entrypoint FastAPI
+├── services/         # Lógica do agente
+├── core/             # Configurações e utilitários
+├── models/           # Modelos de dados
+├── knowledge/        # Base de conhecimento
+```
 
+### Frontend (React + Vite)
+- **React 18**
+- **Tailwind CSS** + **Shadcn/UI**
+- **Framer Motion** (animações)
+- **Radix UI** (acessibilidade)
+- **Axios** (requisições)
 
-
-### 🚀 Execução:
-```bash
-uvicorn app.main:app --reload
-
-💻 Frontend (React + Vite)
-Interface responsiva e interativa conectada ao backend via API REST.
-
-Stack:
-
-React 18
-
-Tailwind CSS + Shadcn/UI
-
-Framer Motion (animações)
-
-Radix UI (acessibilidade)
-
-Axios (requisições)
-
-pnpm (gerenciador de pacotes)
-
-EStrutura:
-
-front_end/
+Estrutura principal:
+```
+frontend/
 ├── src/
 │   ├── App.jsx
 │   ├── components/
-│   └── pages/
-├── vite.config.js
+│   └── hooks/
+```
 
-🔧 Instalação
-Backend
-bash
-Copiar
-Editar
+---
+
+## 🛠️ Tecnologias
+- Python 3.12+
+- FastAPI, LangChain, ChromaDB, Pydantic, OpenAI API
+- Node.js 18+, React, Vite, Tailwind CSS, Shadcn/UI, Radix UI, Axios, pnpm
+
+---
+
+## ⚡ Instalação
+
+### Backend
+```bash
 # Requisitos: Python 3.12+
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload
-Frontend
-bash
-Copiar
-Editar
+```
+
+### Frontend
+```bash
 # Requisitos: Node.js 18+, pnpm
-cd front_end
+cd frontend
 pnpm install
 pnpm dev
-🔌 Integração com Chat IA
-O frontend se conecta à API via:
+```
+Acesse: http://localhost:5173
 
-bash
-Copiar
-Editar
-http://localhost:8000/api/v1/chat/message
+---
+
+## 🚀 Execução
+
+- Backend: `uvicorn app.main:app --reload` (porta padrão: 8000)
+- Frontend: `pnpm dev` (porta padrão: 5173)
+
 Certifique-se de que o backend esteja ativo para o funcionamento do chatbot.
 
-🚀 Scripts Disponíveis (Frontend)
-pnpm dev: inicia servidor local
+---
 
-pnpm build: build de produção
+## 💬 Exemplo de Uso
 
-pnpm preview: preview da build
+### Endpoint de Chat
+```
+POST http://localhost:8000/api/v1/chat/message
+Content-Type: application/json
 
-pnpm lint: linter de código
+{
+  "message": "Quais smartphones estão disponíveis?"
+}
+```
+**Resposta:**
+```json
+{
+  "response": "Atualmente temos os modelos X, Y e Z disponíveis."
+}
+```
 
-🧪 Validação com Pydantic
-Segurança de tipos
+---
 
-Validadores customizados
+## 🤝 Contribuição
 
-Serialização automática
+1. Fork este repositório
+2. Crie uma branch: `git checkout -b minha-feature`
+3. Commit: `git commit -m "feat: minha feature"`
+4. Push: `git push origin minha-feature`
+5. Abra um Pull Request
 
-Documentação automática com FastAPI
+Contribuições, sugestões e issues são bem-vindas!
 
-🧩 LangChain - Orquestração RAG
-Integração de LLMs e retrievers
+---
 
-Pipeline estruturado com chains
+## 📄 Licença
 
-Gerenciamento avançado de prompts
+Distribuído sob licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-Extensibilidade modular
-
-🛠️ Considerações sobre Dependências
-Critérios de seleção:
-
-Maturidade do ecossistema
-
-Licenças permissivas
-
-Segurança e atualização constante
-
-Integração fluida entre componentes
-
-📈 Impacto no Negócio
-Experiência do cliente otimizada
-
-Suporte contínuo e responsivo
-
-Redução da carga operacional
-
-Insights sobre comportamento dos clientes
-
-Vantagem competitiva estratégica
-
-📚 Lições Aprendidas
-Qualidade da base de conhecimento é essencial
-
-Automação exige supervisão humana
-
-Monitoramento contínuo impulsiona melhorias
-
-Arquitetura modular garante evolução sustentável
-
-💡 TechStore – Página de Vendas com IA
-Uma aplicação frontend moderna com um assistente de IA embarcado.
-
-Funcionalidades
-Catálogo de produtos (smartphones, laptops, etc.)
-
-Busca, filtros, favoritos e carrinho
-
-Chatbot para dúvidas sobre produtos
-
-Tecnologias
-React + Vite + Tailwind CSS
-
-Framer Motion, Lucide, Shadcn/UI
-
-Axios, Radix UI
-
-Instalação Frontend
-bash
-Copiar
-Editar
-pnpm install
-pnpm dev
-Acesse via: http://localhost:5173
-
-🤝 Contribuição
-Fork o repositório
-
-Crie sua branch:
-
-bash
-Copiar
-Editar
-git checkout -b minha-feature
-Commit:
-
-bash
-Copiar
-Editar
-git commit -m "feat: adiciona minha feature"
-Push:
-
-bash
-Copiar
-Editar
-git push origin minha-feature
-Abra um Pull Request
-
-📄 Licença
-Distribuído sob licença MIT. Veja LICENSE para mais detalhes.
-
+---
 
 Desenvolvido por Eduardo A. — TechStore
 Powered by OpenAI, LangChain, FastAPI e Engenharia de Qualidade
-  
----
-
-Se quiser, posso gerar também um arquivo `LICENSE` e o `requirements.txt` baseados nas tecnologias listadas. Quer que eu adicione isso também? [Requisitos do projeto](f), [Geração automática do LICENSE](f), ou [Deploy em ambiente cloud](f) podem ser os próximos passos.
 
