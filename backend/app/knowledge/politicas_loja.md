@@ -1,0 +1,1 @@
+# Políticas da Loja
