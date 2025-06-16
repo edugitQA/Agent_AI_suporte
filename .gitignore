@@ -8,7 +8,8 @@ __pycache__/
 *.env
 
 node_modules
-FRONT/public/
-FRONT/pnpm-lock.yaml
-FRONT/eslint.config.js
-FRONT/vite.config.js
+public
+frontend/pnpm-lock.yaml
+frontend/eslint.config.js
+frontend/vite.config.js
+backend/app/logs/

@@ -3,7 +3,9 @@ from datetime import datetime
 import os
 from typing import Any, Dict
 
-LOG_FILE = "backend/app/logs/logs.json"
+# Caminho absoluto para garantir que os logs sejam sempre salvos na pasta correta
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOG_FILE = os.path.join(BASE_DIR, "logs", "logs.json")
 
 def log_interaction(user_id: str, pergunta: str, resposta: Dict[str, Any]) -> None:
     """
