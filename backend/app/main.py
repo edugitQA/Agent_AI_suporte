@@ -5,7 +5,7 @@ import time
 from datetime import datetime
 from fastapi.middleware.cors import CORSMiddleware
 from app.utils.memory_pool import get_agent_for_user
-from app.core.logger import log_interaction
+from app.core.logger import log_interaction, get_user_history
 
 app = FastAPI()
 agente = carregar_agente()
@@ -35,8 +35,15 @@ async def perguntar(user_id: str, request: Request):
             raise HTTPException(status_code=400, detail="Pergunta não fornecida.")
 
         agente = get_agent_for_user(user_id)
+        # Buscar histórico recente do usuário
+        historico = get_user_history(user_id, limit=5)
+        # Montar contexto para a LLM
+        contexto = "\n".join([
+            f"Usuário: {h['pergunta']}\nAgente: {h['resposta']}" for h in historico
+        ])
+        prompt = f"{contexto}\nUsuário: {pergunta}\nAgente:"
         inicio_execucao = time.time()
-        resultado = agente({"query": pergunta})
+        resultado = agente({"query": prompt})
         tempo_exec = f"{(time.time() - inicio_execucao) * 1000:.2f}ms"
 
         # Serializa os documentos fonte em um formato JSON válido
