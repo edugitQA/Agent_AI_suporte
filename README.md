@@ -133,6 +133,30 @@ Content-Type: application/json
 
 ---
 
+## 🧠 Funcionalidade de Memória Persistente (SQLite)
+
+Agora o agente possui memória conversacional persistente! Todas as interações dos usuários são armazenadas automaticamente em um banco de dados SQLite (`backend/db/interactions.db`). Isso permite que o agente "lembre" do histórico de cada usuário e utilize essas informações para respostas mais personalizadas.
+
+**Como funciona:**
+- Cada pergunta e resposta é salva no banco, associada ao usuário.
+- O agente recupera as últimas interações do usuário e utiliza como contexto para novas respostas.
+- O histórico pode ser consultado diretamente via SQLite ou por endpoints customizados.
+
+**Como visualizar o banco:**
+
+Via terminal:
+```bash
+sqlite3 backend/db/interactions.db
+```
+No prompt do SQLite:
+```sql
+SELECT * FROM interactions;
+```
+
+Você também pode usar ferramentas gráficas como DB Browser for SQLite ou extensões do VS Code para explorar o banco.
+
+---
+
 ## 🤝 Contribuição
 
 1. Fork este repositório
