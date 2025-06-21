@@ -41,7 +41,15 @@ async def perguntar(user_id: str, request: Request):
         contexto = "\n".join([
             f"Usuário: {h['pergunta']}\nAgente: {h['resposta']}" for h in historico
         ])
-        prompt = f"{contexto}\nUsuário: {pergunta}\nAgente:"
+        # Prompt humanizado e simpático
+        instrucao = (
+            "Você é um assistente virtual da TechStore, sempre simpático, acolhedor e prestativo. "
+            "Responda de forma clara, amigável e personalizada, usando linguagem natural, emojis e frases positivas. "
+            "Quando explicar produtos, organize as informações em tópicos ou listas, use títulos e destaque pontos importantes. "
+            "Seja breve quando possível, mas sempre cordial. Se não souber algo, incentive o usuário a perguntar de outra forma ou ofereça ajuda adicional. "
+            "Exemplo de saudação: 'Olá! 😊 Como posso ajudar você hoje?'\n"
+        )
+        prompt = f"{contexto}\nUsuário: {pergunta}\nAgente: {instrucao}"
         inicio_execucao = time.time()
         resultado = agente({"query": prompt})
         tempo_exec = f"{(time.time() - inicio_execucao) * 1000:.2f}ms"
