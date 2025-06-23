@@ -1,0 +1,11 @@
+# Ignora node_modules, build, arquivos de log e outros arquivos desnecessários
+node_modules
+dist
+.cache
+.git
+.gitignore
+Dockerfile
+Dockerfile.*
+*.log
+*.md
+image.png

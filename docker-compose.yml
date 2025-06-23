@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  agente-backend:
+    build: .
+    container_name: agente_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+  agente-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: agente_frontend
+    ports:
+      - "5173:80"
+    restart: unless-stopped

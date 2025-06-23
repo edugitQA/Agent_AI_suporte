@@ -113,6 +113,36 @@ Certifique-se de que o backend esteja ativo para o funcionamento do chatbot.
 
 ---
 
+## 🐳 Execução com Docker e Docker Compose
+
+Este projeto já está pronto para ser executado em containers Docker, tanto para o backend (FastAPI) quanto para o frontend (React + Vite).
+
+### Pré-requisitos
+- Docker
+- Docker Compose
+
+### Build e execução dos serviços
+
+No diretório raiz do projeto, execute:
+
+```bash
+docker compose up --build
+```
+
+- O backend estará disponível em: http://localhost:8000
+- O frontend estará disponível em: http://localhost:5173
+
+> **Atenção:**
+> O arquivo `pnpm-lock.yaml` é essencial para o build do frontend. Certifique-se de que ele NÃO está listado no `.dockerignore` para evitar problemas de dependências.
+
+### Parar os serviços
+
+```bash
+docker compose down
+```
+
+---
+
 ## 💬 Exemplo de Uso
 
 ### Endpoint de Chat
