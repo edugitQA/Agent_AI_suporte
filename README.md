@@ -1,5 +1,9 @@
 # 🧠 Agente de IA Conversacional com RAG Integrado
 
+<p align="center">
+  <img src="image.png" alt="Demonstração do Agente de IA" width="400"/>
+</p>
+
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/fastapi-%3E%3D0.100-green)](https://fastapi.tiangolo.com/)
