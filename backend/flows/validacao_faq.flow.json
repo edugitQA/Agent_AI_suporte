@@ -1,0 +1,12 @@
+{
+  "type": "chat",
+  "inputs": ["pergunta"],
+  "outputs": ["resposta"],
+  "prompt": {
+    "template": "Você é um especialista técnico em produtos digitais.\nPergunta: {{pergunta}}\nResposta:"
+  },
+  "dataset": [
+    {"pergunta": "Qual o tempo de garantia?", "resposta_esperada": "12 meses"},
+    {"pergunta": "Posso cancelar a compra?", "resposta_esperada": "sim"}
+  ]
+}
